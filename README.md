@@ -12,19 +12,18 @@ $ RAYON_NUM_THREADS=96 cargo run --release
      Running `target/release/rayon_bug`
 Iterating over 96 items
 Expecting to run 96 threads
-Running: 1
-Running: 2
-Running: 3
-Running: 4
 Running: 5
-Running: 6
+Running: 4
+Running: 1
 Running: 7
 Running: 8
 Running: 9
-Running: 10
+Running: 6
+Running: 3
+Running: 2
 ```
 
-Only 10 cores are being "used" to perform the long running computation
+Only 9 cores are being "used" to perform the long running computation
 
 The `reproduce.sh` script runs the rust application and checks after a second whether all threads have output a message.
 
