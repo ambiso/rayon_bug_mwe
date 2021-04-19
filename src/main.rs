@@ -19,7 +19,7 @@ fn main() {
             println!("Running: {}", c);
         }
         // Some very long running computation
-        sleep(Duration::from_secs(3600));
+        sleep(Duration::from_secs(10));
         1
     }).sum();
     println!("Result: {}", r);
