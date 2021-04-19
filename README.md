@@ -32,3 +32,7 @@ It counts how many times it was successful in reproducing the issue:
 ```
 Reproduced 73 / 100 times
 ```
+
+The issue does not occur anymore when we increase the item count to `t*t*2`.
+
+Also it doesn't seem to be a deadlock, as the computations terminates eventually.

@@ -15,7 +15,7 @@ fn main() {
     let r: u32 = iter.map(|_| {
         let c = concurrent.fetch_add(1, Ordering::SeqCst) + 1;
         println!("Running: {}", c);
-        // Some very long running computation
+        // Some long running computation
         sleep(Duration::from_secs(10));
         1
     }).sum();
