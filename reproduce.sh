@@ -5,7 +5,7 @@ n=100
 out=/tmp/output
 failures=0
 for ((i=0; i<$n;++i)); do
-    cargo run --release > $out 2>/dev/null &
+    RAYON_NUM_THREADS=96 cargo run --release > $out 2>/dev/null &
     pid=$!
     sleep 1
     kill $pid

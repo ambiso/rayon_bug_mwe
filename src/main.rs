@@ -4,7 +4,7 @@ use rayon::{current_num_threads, iter::{ParallelBridge, ParallelIterator}};
 
 fn main() {
     let t = current_num_threads();
-    let n = t*3;
+    let n = t;
     println!("Iterating over {} items", n);
     println!("Expecting to run {} threads", t);
 

@@ -2,16 +2,16 @@
 
 This repo demonstrates a potential bug in the rayon rust library.
 
-When running a long running computation sometimes less than the number of cores are being used to perform the computation.
+When running a long-running computation concurrently sometimes less than the number of cores are being used to perform the computation.
 
-Most easily reproducible on a system with many cores (>= 96).
-
-But sometimes (~30%) also works on a system with 8 cores:
+Most easily reproducible with many threads:
 
 ```
-$ cargo run --release
-    Finished release [optimized] target(s) in 0.05s
+$ RAYON_NUM_THREADS=96 cargo run --release
+    Finished release [optimized] target(s) in 0.03s
      Running `target/release/rayon_bug`
+Iterating over 96 items
+Expecting to run 96 threads
 Running: 1
 Running: 2
 Running: 3
@@ -19,6 +19,17 @@ Running: 4
 Running: 5
 Running: 6
 Running: 7
+Running: 8
+Running: 9
+Running: 10
 ```
 
-Only 7 cores are being "used" to perform the long running computation
+Only 10 cores are being "used" to perform the long running computation
+
+The `reproduce.sh` script runs the rust application and checks after a second whether all threads have output a message.
+
+It counts how many times it was successful in reproducing the issue:
+
+```
+Reproduced 73 / 100 times
+```
